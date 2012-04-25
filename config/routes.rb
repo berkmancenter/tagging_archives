@@ -1,4 +1,10 @@
 TaggingArchives::Application.routes.draw do
+  post "bookmarklets/add_item"
+  get "bookmarklets/add"
+  get "bookmarklets/confirm"
+  
+  resources :tagged_items
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +54,7 @@ TaggingArchives::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'tagged_items#index'
 
   # See how all your routes lay out with "rake routes"
 

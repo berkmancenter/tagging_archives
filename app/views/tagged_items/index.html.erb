@@ -1,0 +1,25 @@
+<h1>Tagged Items</h1>
+
+<h3><a href="javascript:(function(){f='<%= bookmarklets_add_url %>?tagged_item%5burl%5d='+encodeURIComponent(window.location.href)+'&tagged_item%5btitle%5d='+encodeURIComponent(document.title)+'&';a=function(){if(!window.open(f+'noui=1&jump=doclose','tagging_archives','location=1,links=0,scrollbars=0,toolbar=0,width=710,height=660'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()">Tag Item</a></h3>
+
+<table>
+  <tr>
+	<th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tagged_items.each do |tagged_item| %>
+  <tr>
+	<td><%= tagged_item.title %></td>
+    <td><%= link_to 'Show', tagged_item %></td>
+    <td><%= link_to 'Edit', edit_tagged_item_path(tagged_item) %></td>
+    <td><%= link_to 'Destroy', tagged_item, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tagged item', new_tagged_item_path %>

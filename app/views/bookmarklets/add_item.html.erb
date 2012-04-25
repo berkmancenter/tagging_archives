@@ -1,0 +1,10 @@
+<%= semantic_form_for(@tagged_item, :url => bookmarklets_add_item_url, :method => :post) do |f| %>
+  <div class="bookmarklet_tabs" id="bookmarklet_tabs">
+
+      <%= f.inputs do %>
+        <%= f.input :title, :required => true %>
+        <%= f.input :urn, :required => true %>
+      <% end %>
+      <%= f.actions %>
+  </div>
+<% end %>

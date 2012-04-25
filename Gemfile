@@ -7,6 +7,8 @@ gem 'rails', '3.2.2'
 
 gem 'pg'
 gem 'formtastic'
+gem 'jquery-rails'
+gem 'acts-as-taggable-on'
 
 
 # Gems used only for assets and not required
