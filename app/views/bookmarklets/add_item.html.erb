@@ -2,8 +2,8 @@
   <div class="bookmarklet_tabs" id="bookmarklet_tabs">
 
       <%= f.inputs do %>
-        <%= f.input :title, :required => true %>
-        <%= f.input :urn, :required => true %>
+        <%= f.input :title, :required => true, :input_html => { :value => @title } %>
+        <%= f.input :urn, :required => true, :input_html => { :value => @urn } %>
       <% end %>
       <%= f.actions %>
   </div>

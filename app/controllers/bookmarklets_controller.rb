@@ -3,6 +3,8 @@ class BookmarkletsController < ApplicationController
   # Generate the bookmarklet.
   def add
     @tagged_item = TaggedItem.new
+    @title = params[:tagged_item][:title]
+    @urn = params[:tagged_item][:url]
   end
   
   def add_item
