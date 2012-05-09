@@ -1,0 +1,42 @@
+<div style="margin-bottom: 1em;">
+  <h2>Tagged Item Search</h2>
+  <%= form_tag(item_search_tagged_item_path(@tagged_item), :method => :get, :id => 'tagged_item_search_form') do %>
+    <ul class="search_controls">
+      <li><span class="ui-silk ui-silk-zoom inline"></span> <%= text_field_tag :q, params[:q], :size => 50, :placeholder => 'Keyword search. . .' %></li>
+      <li><span class="ui-silk ui-silk-tag-blue-add inline"></span> <%= text_field_tag :include_tag_autocomplete, '', :size => 50, :placeholder => 'Include these tags. . . .' %></li>
+    <li id="include_tag_container" class="container">
+      <% ActsAsTaggableOn::Tag.find(:all, :conditions => {:id => params[:include_tag_ids]}).each do|tag| %>
+        <span class="search_select tag"><input name="include_tag_ids[]" type="hidden" value="<%= tag.id %>" /><%= tag.name %><span class="search_select_control"> X </span></span>
+      <% end %>
+    </li>
+    
+    <li>Join fielded search criteria together with: 
+    <%= radio_button_tag(:junction_type, 'and', (params[:junction_type] == 'and') ? true : false, :id => 'junction_type_and') %> 
+    <%= label_tag(:junction_type_and, 'AND') %>
+    <%= radio_button_tag(:junction_type, 'or', (params[:junction_type] == 'or') ? true : false, :id => 'junction_type_or') %>
+    <%= label_tag(:junction_type_or, 'OR') %>
+    </li>
+    <li><%= submit_tag('Search items', :class => 'button') %> <%= link_to('bookmark this search', request.fullpath) unless @search.blank? || @search.results.length == 0 %></li>
+  </ul>
+  <% end %>
+</div>
+
+<% if @search.blank? || @search.results.length == 0 %>
+  <h3>Nothing. Please try a different term.</h3>
+<% else %>
+  <h2>Items: <%= @search.total %> total </h2>
+  <%= will_paginate @search.results %>
+  <table class="hub">
+    <% @search.results.each do|r| %>
+      <%= render :partial => 'shared/line_items/feed_item', :object => r %>
+    <% end %>
+  </table>
+  <%= will_paginate @search.results %>
+<% end %>
+
+<%= javascript_tag %Q|$(document).ready(function(){
+$.observeAutocomplete($.rootPath() + 'hubs/#{@hub.id}/tags/autocomplete','#include_tag_autocomplete', 'include_tag_ids', '#include_tag_container','search_select tag'); 
+$.observeAutocomplete($.rootPath() + 'hubs/#{@hub.id}/tags/autocomplete','#exclude_tag_autocomplete', 'exclude_tag_ids', '#exclude_tag_container','search_select tag');
+$.observeAutocomplete($.rootPath() + 'hubs/#{@hub.id}/hub_feeds/autocomplete','#hub_feed_autocomplete','hub_feed_ids', '#hub_feed_container','search_select tag');
+$.observeSearchSelectControl();
+});| %>

@@ -3,7 +3,11 @@ TaggingArchives::Application.routes.draw do
   get "bookmarklets/add"
   get "bookmarklets/confirm"
   
-  resources :tagged_items
+  resources :tagged_items do
+    member do
+      get 'item_search'
+    end
+  end  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

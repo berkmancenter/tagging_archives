@@ -1,10 +1,1 @@
-<%= semantic_form_for(@tagged_item, :url => bookmarklets_add_item_url, :method => :post) do |f| %>
-  <div class="bookmarklet_tabs" id="bookmarklet_tabs">
-
-      <%= f.inputs do %>
-        <%= f.input :title, :required => true, :input_html => { :value => @title, :size => 100 } %>
-        <%= f.input :urn, :required => true, :input_html => { :value => @urn, :size => 100 } %>
-      <% end %>
-      <%= f.actions %>
-  </div>
-<% end %>
+<%= render :partial => 'shared/forms/tagged_item_bookmarklet' %>
