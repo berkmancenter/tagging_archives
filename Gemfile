@@ -9,6 +9,10 @@ gem 'pg'
 gem 'formtastic'
 gem 'jquery-rails'
 gem 'acts-as-taggable-on'
+gem "will_paginate"
+gem 'sunspot'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 
 # Gems used only for assets and not required

@@ -3,6 +3,7 @@ class TaggedItemsController < ApplicationController
   # GET /tagged_items.json
   def index
     @tagged_items = TaggedItem.all
+    
 
     respond_to do |format|
       format.html # index.html.erb
