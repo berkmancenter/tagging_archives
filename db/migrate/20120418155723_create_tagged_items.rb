@@ -6,5 +6,9 @@ class CreateTaggedItems < ActiveRecord::Migration
       t.string :sequence
       t.timestamps
     end
+    
+    add_index :tagged_items, :title
+    add_index :tagged_items, :urn
+    add_index :tagged_items, :sequence
   end
 end
