@@ -83,14 +83,9 @@ class TaggedItemsController < ApplicationController
   end
   
   def item_search
-    Post.search do
-      fulltext 'best pizza'
-
-      with :blog_id, 1
-      with(:published_at).less_than Time.now
-      order_by :published_at, :desc
-      paginate :page => 2, :per_page => 15
-      facet :category_ids, :author_id
+    @query = params[:query]
+    @search = TaggedItem.search do
+      fulltext params[:query]
     end
     
   end

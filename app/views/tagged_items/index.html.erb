@@ -2,28 +2,10 @@
 
 <h3><a href="javascript:(function(){var%20x=parent.FindingAid;if%20(x==undefined){var%20x=window.document.getElementsByTagName(%22a%22);if(x.length%20!=%200){var%20i;for%20(i%20in%20x){if%20(x.item(i).innerHTML==%22Frames%20Version%22){var%20link2=x.item(i).getAttribute(%22href%22);}}myWindow=window.open(link2,%27%27,%27width=200,height=100%27);function%20winload(){alert(myWindow.location.href);var%20y=myWindow.frames[0].document.getElementsByTagName(%22a%22);var%20j;for%20(j%20in%20y){if%20(y.item(j).getAttribute(%22target%22)==%22urnPage%22){var%20link=y.item(j).innerHTML;}}f='<%= bookmarklets_add_url %>?tagged_item%5burl%5d='+encodeURIComponent(link)+'&tagged_item%5btitle%5d='+encodeURIComponent(document.title)+'&';a=function(){if(!window.open(f+'noui=1&jump=doclose','tagging_archives','location=1,links=0,scrollbars=0,toolbar=0,width=710,height=660'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}myWindow.close();}myWindow.onload=winload;}else{myWindow2=window.open(window.location.href.replace(%22view%22,%20%22fullcitation%22),%27%27,%27width=200,height=100%27);function%20atload(){alert(myWindow2.location.href);f='<%= bookmarklets_add_url %>?tagged_item%5burl%5d='+encodeURIComponent(myWindow2.document.getElementsByClassName(%22resUrn%22)[1].innerHTML)+'&tagged_item%5btitle%5d='+encodeURIComponent(document.title)+'&';a=function(){if(!window.open(f+'noui=1&jump=doclose','tagging_archives','location=1,links=0,scrollbars=0,toolbar=0,width=710,height=360'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}myWindow2.close();}myWindow2.onload=atload;}}else{var%20x=window.frames[0].document.getElementsByTagName(%22a%22);var%20i;for%20(i%20in%20x){if%20(x.item(i).getAttribute(%22target%22)==%22urnPage%22){var%20link=x.item(i).getAttribute(%22href%22);}}f='<%= bookmarklets_add_url %>?tagged_item%5burl%5d='+encodeURIComponent(link)+'&tagged_item%5btitle%5d='+encodeURIComponent(document.title)+'&';a=function(){if(!window.open(f+'noui=1&jump=doclose','tagging_archives','location=1,links=0,scrollbars=0,toolbar=0,width=710,height=360'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}}})()">Tag Item</a></h3>
 
-
-<table>
-  <tr>
-	<th>Title</th>
-	<th>URN</th>
-    <th>Tags</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @tagged_items.each do |tagged_item| %>
-  <tr>
-	<td><%= tagged_item.title %></td>
-	<td><%= tagged_item.urn %></td>
-	<td><%= tagged_item.tag_list %></td>
-    <td><%= link_to 'Show', tagged_item %></td>
-    <td><%= link_to 'Edit', edit_tagged_item_path(tagged_item) %></td>
-    <td><%= link_to 'Destroy', tagged_item, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<%= form_tag item_search_tagged_items_path, :method => :get do %>
+<p>
+  <%= text_field_tag :query, params[:query] %> <%= submit_tag "Search!" %>
+</p>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Tagged item', new_tagged_item_path %>
+<%= render :partial => 'tagged_item_list', :locals => {:items => @tagged_items} %>

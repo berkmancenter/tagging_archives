@@ -1,0 +1,24 @@
+<table>
+  <tr>
+	<th>Title</th>
+	<th>URN</th>
+    <th>Tags</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% items.each do |tagged_item| %>
+  <tr>
+	<td><%= link_to tagged_item.title, tagged_item.urn %></td>
+	<td><%= tagged_item.urn %></td>
+	<td><%= tagged_item.tag_list %></td>
+    <td><%= link_to 'Show', tagged_item %></td>
+    <td><%= link_to 'Edit', edit_tagged_item_path(tagged_item) %></td>
+    <td><%= link_to 'Destroy', tagged_item, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tagged item', new_tagged_item_path %>

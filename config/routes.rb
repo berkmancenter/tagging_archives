@@ -4,7 +4,7 @@ TaggingArchives::Application.routes.draw do
   get "bookmarklets/confirm"
   
   resources :tagged_items do
-    member do
+    collection do
       get 'item_search'
     end
   end  
