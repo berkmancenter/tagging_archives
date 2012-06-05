@@ -1,5 +1,8 @@
 class TaggedItem < ActiveRecord::Base
   acts_as_taggable
+  
+  validates_presence_of :title, :urn
+  validates_uniqueness_of :urn
 
   searchable :auto_index => true, :auto_remove => true do
     text :title, :more_like_this => true
