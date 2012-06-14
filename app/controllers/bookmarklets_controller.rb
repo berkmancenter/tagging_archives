@@ -5,6 +5,7 @@ class BookmarkletsController < ApplicationController
     @tagged_item = TaggedItem.new
     @title = params[:tagged_item][:title]
     @urn = params[:tagged_item][:url]
+    @finding_aid = params[:tagged_item][:aid]
   end
   
   def add_item

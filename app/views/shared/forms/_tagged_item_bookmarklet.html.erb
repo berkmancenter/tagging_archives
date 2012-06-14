@@ -5,6 +5,7 @@
         <%= f.input :title, :required => true, :input_html => { :value => @title, :size => 100 } %>
         <%= f.input :urn, :required => true, :input_html => { :value => @urn, :size => 100 } %>
 		<%= f.input :tag_list, :label => 'Tags', :hint => 'A comma separated list of tags.', :input_html => { :size => 100 } %>
+		<%= f.input :notes %>
       <% end %>
       <%= f.actions %>
   </div>
