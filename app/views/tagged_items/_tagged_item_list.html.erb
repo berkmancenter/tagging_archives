@@ -5,7 +5,9 @@
 	<th>Title</th>
     <th>Tags</th>
 	<th>Notes</th>
-    <th></th>
+	<% if current_user.admin? %>
+      <th></th>
+	<% end %>
   </tr>
 
 <% items.each do |tagged_item| %>
@@ -13,7 +15,9 @@
 	<td><%= link_to tagged_item.title, tagged_item.urn %></td>
 	<td><%= tagged_item.tag_list %></td>
 	<td><%= tagged_item.notes %></td>
-    <td><%= link_to 'Show', tagged_item %> | <%= link_to 'Edit', edit_tagged_item_path(tagged_item) %> | <%= link_to 'Destroy', tagged_item, confirm: 'Are you sure?', method: :delete %></td>
+	<% if current_user.admin? %>
+      <td><%= link_to 'Edit', edit_tagged_item_path(tagged_item) %> | <%= link_to 'Destroy', tagged_item, confirm: 'Are you sure?', method: :delete %></td>
+	<% end %>
   </tr>
 <% end %>
 </table>

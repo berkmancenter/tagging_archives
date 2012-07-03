@@ -1,4 +1,6 @@
 class TaggedItemsController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /tagged_items
   # GET /tagged_items.json
   def index

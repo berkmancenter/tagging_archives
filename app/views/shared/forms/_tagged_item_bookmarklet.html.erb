@@ -2,10 +2,10 @@
   <div class="bookmarklet_tabs" id="bookmarklet_tabs">
 
       <%= f.inputs do %>
-        <%= f.input :title, :required => true, :input_html => { :value => @title, :size => 100 } %>
-        <%= f.input :urn, :required => true, :input_html => { :value => @urn, :size => 100 } %>
+        <%= f.input :title, :required => true, :input_html => { :value => @title, :size => 100, :readonly => true } %>
+        <%= f.input :urn, :required => true, :input_html => { :value => @urn, :size => 100, :readonly => true } %>
 		<%= f.input :tag_list, :label => 'Tags', :hint => 'A comma separated list of tags.', :input_html => { :size => 100 } %>
-		<%= f.input :notes %>
+		<%= f.input :notes, :input_html => { :rows => 5, :cols => 50 } %>
       <% end %>
       <%= f.actions %>
   </div>

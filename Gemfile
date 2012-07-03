@@ -14,6 +14,7 @@ gem 'sunspot'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'therubyracer'
+gem 'devise'
 
 
 # Gems used only for assets and not required

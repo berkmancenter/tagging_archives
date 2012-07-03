@@ -1,4 +1,6 @@
 TaggingArchives::Application.routes.draw do
+  devise_for :users
+
   post "bookmarklets/add_item"
   get "bookmarklets/add"
   get "bookmarklets/confirm"
