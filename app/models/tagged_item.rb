@@ -5,8 +5,8 @@ class TaggedItem < ActiveRecord::Base
   validates_uniqueness_of :urn
 
   searchable :auto_index => true, :auto_remove => true do
-    text :title, :more_like_this => true
-    text :urn, :more_like_this => true
+    #text :title, :more_like_this => true
+    #text :urn, :more_like_this => true
     text :tag_list, :more_like_this => true
 
     string :tag_list, :multiple => true

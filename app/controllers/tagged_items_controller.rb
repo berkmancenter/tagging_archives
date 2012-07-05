@@ -63,7 +63,7 @@ class TaggedItemsController < ApplicationController
 
     respond_to do |format|
       if @tagged_item.update_attributes(params[:tagged_item])
-        format.html { redirect_to @tagged_item, notice: 'Tagged item was successfully updated.' }
+        format.html { redirect_to tagged_items_url, notice: 'Tagged item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

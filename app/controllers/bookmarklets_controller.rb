@@ -10,7 +10,10 @@ class BookmarkletsController < ApplicationController
   end
   
   def add_item
-    @tagged_item = TaggedItem.new(params[:tagged_item])
+    @tagged_item = TaggedItem.find(:first, :conditions => {:urn => params[:tagged_item][:urn]})
+    if @tagged_item.nil? 
+      @tagged_item = TaggedItem.new(params[:tagged_item])
+    end  
 
     # Merge tags.
     @tagged_item.tag_list = [@tagged_item.tag_list, params[:tagged_item][:tag_list].split(/,\s*/).collect{|t| t.downcase[0,255].gsub(/,/,'_')}].flatten.compact.join(',')

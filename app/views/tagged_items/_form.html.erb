@@ -1,17 +1,11 @@
-<%= form_for(@tagged_item) do |f| %>
-  <% if @tagged_item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tagged_item.errors.count, "error") %> prohibited this tagged_item from being saved:</h2>
+<%= semantic_form_for(@tagged_item) do |f| %>
 
-      <ul>
-      <% @tagged_item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <%= f.inputs do %>
+        <%= f.input :title, :required => true, :input_html => { :size => 100, :readonly => true } %>
+        <%= f.input :urn, :required => true, :input_html => { :size => 100, :readonly => true } %>
+		<%= f.input :tag_list, :label => 'Tags', :hint => 'A comma separated list of tags.', :input_html => { :size => 100 } %>
+		<%= f.input :notes, :input_html => { :rows => 5, :cols => 50 } %>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
+      <%= f.actions %>
   </div>
 <% end %>
