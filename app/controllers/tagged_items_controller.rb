@@ -88,7 +88,7 @@ class TaggedItemsController < ApplicationController
     @query = params[:query]
     @search = TaggedItem.search do
       fulltext params[:query]
-      paginate :page => 1, :per_page => 1
+      paginate :page => 1, :per_page => 10
     end
     
   end
