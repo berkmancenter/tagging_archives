@@ -5,7 +5,7 @@ class TaggedItemsController < ApplicationController
   # GET /tagged_items.json
   def index
     @tagged_items = TaggedItem.all
-    
+    @all_tags = @tagged_items.collect{|tag| tag.tag_list}.flatten!.uniq!
 
     respond_to do |format|
       format.html # index.html.erb

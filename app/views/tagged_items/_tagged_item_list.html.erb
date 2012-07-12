@@ -12,9 +12,9 @@
 
 <% items.each do |tagged_item| %>
   <tr>
-	<td><%= link_to tagged_item.title, tagged_item.urn %></td>
+	<td><%= link_to tagged_item.title, tagged_item.urn, :target => "_blank" %></td>
 	<td><%= tagged_item.tag_list %></td>
-	<td><%= tagged_item.notes %></td>
+	<td><%= h(tagged_item.notes).gsub(/\r/, '<br/>').html_safe %></td>
 	<% if current_user.admin? %>
       <td><%= link_to 'Edit', edit_tagged_item_path(tagged_item) %> | <%= link_to 'Destroy', tagged_item, confirm: 'Are you sure?', method: :delete %></td>
 	<% end %>

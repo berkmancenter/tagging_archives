@@ -3,6 +3,7 @@ class BookmarkletsController < ApplicationController
   
   # Generate the bookmarklet.
   def add
+    @existing = TaggedItem.find(:first, :conditions => {:urn => params[:tagged_item][:url]})
     @tagged_item = TaggedItem.new
     @title = params[:tagged_item][:title]
     @urn = params[:tagged_item][:url]
@@ -13,8 +14,10 @@ class BookmarkletsController < ApplicationController
     @tagged_item = TaggedItem.find(:first, :conditions => {:urn => params[:tagged_item][:urn]})
     if @tagged_item.nil? 
       @tagged_item = TaggedItem.new(params[:tagged_item])
-    end  
-
+    end
+     
+    # Merge notes.
+    @tagged_item.notes = @tagged_item.notes+"\r"+params[:tagged_item][:notes]
     # Merge tags.
     @tagged_item.tag_list = [@tagged_item.tag_list, params[:tagged_item][:tag_list].split(/,\s*/).collect{|t| t.downcase[0,255].gsub(/,/,'_')}].flatten.compact.join(',')
 
