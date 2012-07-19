@@ -5,7 +5,6 @@ class TaggedItemsController < ApplicationController
   # GET /tagged_items.json
   def index
     @tagged_items = TaggedItem.all
-    @all_tags = @tagged_items.collect{|tag| tag.tag_list}.flatten!.uniq!
 
     respond_to do |format|
       format.html # index.html.erb
@@ -91,5 +90,13 @@ class TaggedItemsController < ApplicationController
       paginate :page => 1, :per_page => 10
     end
     
+  end
+  
+  def all_tags
+    @all_tags = TaggedItem.all.collect{|tag| tag.tag_list}.flatten!.uniq!
+  end
+  
+  def all_items
+    @tagged_items = TaggedItem.all
   end
 end

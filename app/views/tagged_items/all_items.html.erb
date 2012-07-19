@@ -1,0 +1,5 @@
+<% content_for :header do %>Tagged Items<% end %>
+
+<%= render :partial => 'shared/navigation' %>
+
+<%= render :partial => 'tagged_item_list', :locals => {:items => @tagged_items} %>

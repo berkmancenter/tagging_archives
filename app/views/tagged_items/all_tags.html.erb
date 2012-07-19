@@ -1,0 +1,5 @@
+<% content_for :header do %>All Tags<% end %>
+
+<%= render :partial => 'shared/navigation' %>
+
+<%= render :partial => 'tag_list', :locals => {:tags => @all_tags} %>

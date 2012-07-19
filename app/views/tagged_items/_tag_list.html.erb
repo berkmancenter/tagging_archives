@@ -1,0 +1,7 @@
+<p>Click on the tag name to find all items with that tag.</p>
+
+<% tags.each do |tag| %>
+	<%= form_tag item_search_tagged_items_path, :method => :get do %>
+	  <%= hidden_field_tag :query, tag %> <%= submit_tag tag %>
+	<% end %>
+<% end %>

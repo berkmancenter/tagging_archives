@@ -8,6 +8,8 @@ TaggingArchives::Application.routes.draw do
   resources :tagged_items do
     collection do
       get 'item_search'
+      get 'all_items'
+      get 'all_tags'
     end
   end  
 
