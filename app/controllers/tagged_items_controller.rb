@@ -93,10 +93,11 @@ class TaggedItemsController < ApplicationController
   end
   
   def all_tags
-    @all_tags = TaggedItem.all.collect{|tag| tag.tag_list}.flatten!.uniq!
+    @tags = TaggedItem.tag_counts_on(:tags)
   end
   
   def all_items
     @tagged_items = TaggedItem.all
   end
+  
 end

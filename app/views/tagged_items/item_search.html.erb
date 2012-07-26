@@ -1,5 +1,7 @@
 <% content_for :header do %>Search Results<% end %>
 
+<%= render :partial => 'shared/navigation' %>
+
 <p>Search Term: <%= @query %></p>
 
 <% if @search.total == 0 %>

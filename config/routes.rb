@@ -10,6 +10,7 @@ TaggingArchives::Application.routes.draw do
       get 'item_search'
       get 'all_items'
       get 'all_tags'
+      get 'tag_cloud'
     end
   end  
 

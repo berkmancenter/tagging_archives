@@ -1,7 +1,9 @@
 <p>Click on the tag name to find all items with that tag.</p>
 
-<% tags.each do |tag| %>
-	<%= form_tag item_search_tagged_items_path, :method => :get do %>
-	  <%= hidden_field_tag :query, tag %> <%= submit_tag tag %>
+<% unless @tags.nil? %>
+	<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+	  <%= link_to tag.name, item_search_tagged_items_path(:query => tag.name), :class => css_class %>
 	<% end %>
-<% end %>
+<% else %>
+	No tags yet!
+<% end %>	
