@@ -1,6 +1,7 @@
 class TaggedItem < ActiveRecord::Base
   acts_as_taggable
   
+  has_and_belongs_to_many :users
   validates_presence_of :title, :urn, :tag_list
   validates_uniqueness_of :urn
 

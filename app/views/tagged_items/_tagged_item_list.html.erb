@@ -5,6 +5,7 @@
 	<th>Title</th>
     <th>Tags</th>
 	<th>Notes</th>
+	<th>Tagged By</th>
 	<% if current_user.admin? %>
       <th></th>
 	<% end %>
@@ -15,6 +16,11 @@
 	<td><%= link_to tagged_item.title, tagged_item.urn, :target => "_blank" %></td>
 	<td><%= tagged_item.tag_list %></td>
 	<td><%= h(tagged_item.notes).gsub(/\r/, '<br/>').html_safe %></td>
+	<td>
+		<% tagged_item.users.each do |u| %>
+			<%= u.user_identifier %>
+		<% end %>
+	</td>
 	<% if current_user.admin? %>
       <td><%= link_to 'Edit', edit_tagged_item_path(tagged_item) %> | <%= link_to 'Destroy', tagged_item, confirm: 'Are you sure?', method: :delete %></td>
 	<% end %>
