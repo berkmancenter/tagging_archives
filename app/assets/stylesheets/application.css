@@ -529,4 +529,17 @@ th {
 .css3 { font-size: 1.4em; }
 .css4 { font-size: 1.6em; }
 
+#tagged_items_box {
+	background: #8c8179 none repeat scroll 0%;
+	margin-right: 20px;
+	padding: 10px 10px 10px;
+}
+
+#tagged_item {
+	border: 1px solid #8c8179;
+	padding: 10px 10px 5px;
+	background: #FFF none repeat scroll 0%;
+	
+}
+
 
