@@ -1,5 +1,7 @@
 
 <br />
+<%= will_paginate @posts %>
+<br />
 <div id="tagged_items_box">
 	<% items.each do |tagged_item| %>
 	<div id="tagged_item">
@@ -37,4 +39,6 @@
 	
 	</div>
 	<% end %>
-</div>	
+</div>
+<br />
+<%= will_paginate @posts %>

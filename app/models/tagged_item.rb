@@ -4,6 +4,8 @@ class TaggedItem < ActiveRecord::Base
   has_and_belongs_to_many :users
   validates_presence_of :title, :urn, :tag_list
   validates_uniqueness_of :urn
+  
+  self.per_page = 10
 
   searchable :auto_index => true, :auto_remove => true do
     text :notes, :more_like_this => true

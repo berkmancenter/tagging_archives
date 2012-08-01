@@ -97,7 +97,7 @@ class TaggedItemsController < ApplicationController
   end
   
   def all_items
-    @tagged_items = TaggedItem.all
+    @tagged_items = TaggedItem.paginate(:page => params[:page])
   end
   
 end
