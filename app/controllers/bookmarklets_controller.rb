@@ -15,16 +15,16 @@ class BookmarkletsController < ApplicationController
     params[:tagged_item][:user_ids] = [current_user.id]
     if @tagged_item.nil? 
       @tagged_item = TaggedItem.new(params[:tagged_item])
+    else
+      # Merge notes.
+      @tagged_item.notes = @tagged_item.notes+"\r"+params[:tagged_item][:notes]
+      # Merge tags.
+      @tagged_item.tag_list = [@tagged_item.tag_list, params[:tagged_item][:tag_list].split(/,\s*/).collect{|t| t.downcase[0,255].gsub(/,/,'_')}].flatten.compact.join(',')
+      # Merge users.
+      @user = User.find(current_user.id)
+      @tagged_item.users << @user
+      @tagged_item.users.flatten.uniq!  
     end
-     
-    # Merge notes.
-    @tagged_item.notes = @tagged_item.notes+"\r"+params[:tagged_item][:notes]
-    # Merge tags.
-    @tagged_item.tag_list = [@tagged_item.tag_list, params[:tagged_item][:tag_list].split(/,\s*/).collect{|t| t.downcase[0,255].gsub(/,/,'_')}].flatten.compact.join(',')
-    # Merge users.
-    @user = User.find(current_user.id)
-    @tagged_item.users << @user
-    @tagged_item.users.flatten.uniq!
 
     respond_to do|format|
       if @tagged_item.save

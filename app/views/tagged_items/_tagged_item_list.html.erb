@@ -19,7 +19,7 @@
 			<% end %>
 			<br />
 		
-			<strong>Notes:</strong> <br />
+			<strong>Notes:</strong><br />
 			<% if !tagged_item.notes.blank? %>
 				<%= h(tagged_item.notes).gsub(/\r/, '<br/>').html_safe %><br />
 			<% else %>
@@ -28,7 +28,9 @@
 		</p>	
 		<p>
 			<% if current_user.admin? %>
-		      <td><%= link_to 'Edit', edit_tagged_item_path(tagged_item) %> | <%= link_to 'Destroy', tagged_item, confirm: 'Are you sure?', method: :delete %></td>
+		      	<%= link_to 'Edit', edit_tagged_item_path(tagged_item) %> | <%= link_to 'Destroy', tagged_item, confirm: 'Are you sure?', method: :delete %>
+			<% else %>
+				<%= link_to 'Report', edit_tagged_item_path(tagged_item) %>
 			<% end %>
 		</p>	
 	
