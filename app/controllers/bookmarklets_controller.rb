@@ -1,5 +1,6 @@
 class BookmarkletsController < ApplicationController
   before_filter :authenticate_user!
+  layout "bookmarklet"
   
   # Generate the bookmarklet.
   def add
