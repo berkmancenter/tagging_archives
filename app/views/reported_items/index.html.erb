@@ -2,8 +2,8 @@
 
 <%= render :partial => 'shared/navigation' %>
 
-<% unless @reported_items.nil? %>
+<% unless @reported_items.blank? %>
 	<%= render :partial => 'reported_item_list', :locals => {:items => @reported_items} %>
 <% else %>
-	No items reported!
+	<p>No items reported!</p>
 <% end %>
