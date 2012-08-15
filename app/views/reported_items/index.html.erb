@@ -1,0 +1,5 @@
+<% content_for :header do %>Reported Items<% end %>
+
+<%= render :partial => 'shared/navigation' %>
+
+<%= render :partial => 'reported_item_list', :locals => {:items => @reported_items} %>

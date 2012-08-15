@@ -1,4 +1,6 @@
 TaggingArchives::Application.routes.draw do
+  resources :reported_items
+
   devise_for :users
 
   post "bookmarklets/add_item"

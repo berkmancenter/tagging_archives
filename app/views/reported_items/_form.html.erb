@@ -1,0 +1,10 @@
+<%= semantic_form_for(@reported_item) do |f| %>
+
+      <%= f.inputs do %>
+        <%= f.input :tagged_item, :as => :string, :required => true, :input_html => { :value => @tagged_item.title, :size => 100, :readonly => true } %>
+		<%= f.input :user, :label => 'Reported By', :as => :string, :required => true, :input_html => { :value => current_user.email, :size => 100, :readonly => true } %>
+		<%= f.input :comments, :input_html => { :rows => 5, :cols => 50 } %>
+      <% end %>
+      <%= f.actions %>
+  </div>
+<% end %>

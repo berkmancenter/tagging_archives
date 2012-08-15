@@ -125,7 +125,7 @@ li {
 }
 
 form.formtastic fieldset.inline_fields  ol {
-    margin-left: -13.5%;
+    margin-left: 13.5%;
 }
     
 form.formtastic fieldset.inline_fields  li {

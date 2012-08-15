@@ -1,0 +1,26 @@
+
+<br />
+<%= will_paginate items %>
+<br />
+<div id="tagged_items_box">
+	<% items.each do |reported_item| %>
+	<div id="tagged_item">
+		<p><%= link_to reported_item.tagged_item.title, reported_item.tagged_item.urn, :target => "_blank" %></p>
+		<p>
+			<strong>URN</strong>: <%= link_to reported_item.tagged_item.urn, reported_item.tagged_item.urn, :target => "_blank" %><br />
+			<strong>Reported By</strong>: <%= mail_to reported_item.user.email, reported_item.user.email %><br />
+			<strong>Comments</strong>: <br />
+				<%= h(reported_item.comments).gsub(/\r/, '<br/>').html_safe %><br />
+		</p>	
+		<p>
+			<% if current_user.admin? %>
+		      	<%= link_to 'Edit Item', edit_tagged_item_path(reported_item.tagged_item) %> | <%= link_to 'Delete Report', reported_item, confirm: 'Are you sure?', method: :delete %>
+			<% end %>
+		</p>	
+	
+	
+	</div>
+	<% end %>
+</div>
+<br />
+<%= will_paginate items %>
