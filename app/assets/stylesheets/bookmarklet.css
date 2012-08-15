@@ -123,3 +123,13 @@ li {
 	list-style-type: none;
 	padding-bottom: 4px;
 }
+
+form.formtastic fieldset.inline_fields  ol {
+    margin-left: -13.5%;
+}
+    
+form.formtastic fieldset.inline_fields  li {
+    float: left;
+    width: 100px;
+    margin-right: 1em;
+}
