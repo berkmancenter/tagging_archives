@@ -14,4 +14,4 @@ namespace :tagging_archives do
       puts "Admin password is: #{user.password}"
     end
   end
-end    
+end
