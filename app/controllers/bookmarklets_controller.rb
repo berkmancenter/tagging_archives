@@ -13,8 +13,8 @@ class BookmarkletsController < ApplicationController
   
   def add_item
     @tagged_item = TaggedItem.find(:first, :conditions => {:urn => params[:tagged_item][:urn]})
-    params[:tagged_item][:user_ids] = [current_user.id]
     if @tagged_item.nil? 
+      params[:tagged_item][:user_ids] = [current_user.id]
       @tagged_item = TaggedItem.new(params[:tagged_item])
     else
       # Merge notes.
@@ -23,13 +23,13 @@ class BookmarkletsController < ApplicationController
       @tagged_item.tag_list = [@tagged_item.tag_list, params[:tagged_item][:tag_list].split(/,\s*/).collect{|t| t.downcase[0,255].gsub(/,/,'_')}].flatten.compact.join(',')
       # Merge users.
       @user = User.find(current_user.id)
-      @tagged_item.users << @user
-      @tagged_item.users.flatten.uniq!  
+      if !@tagged_item.users.include?(@user)
+        @tagged_item.users << @user
+      end 
     end
 
     respond_to do|format|
       if @tagged_item.save
-        flash[:notice] = 'Added that tagged item.'
         format.html {
           redirect_to bookmarklets_confirm_url(:tagged_item_id => @tagged_item.id) 
         }

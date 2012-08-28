@@ -1,3 +1,9 @@
-<h1>Added that item.</h1>
-<p>Successfully added tags.</p>
-<p><a href="javascript:window.close();">Close this window</a></p>
+<h1>Item was successfully tagged.</h1>
+
+	<h3><%= link_to "View All Tagged Items", all_items_tagged_items_path %></h3>
+	<h3><%= link_to "View All Tags", all_tags_tagged_items_path %></h3>
+	<% if current_user.admin? %>
+		<h3><%= link_to "View All Reported Items", reported_items_path %></h3>
+	<% end %>	
+	<br />
+	<h2><a href="javascript:window.close();">Close this window</a></h2>

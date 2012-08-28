@@ -70,7 +70,7 @@ dd {
 }
 
 #container {
-	width: 200px;
+	width: 100%;
 }
 
 #utility {
@@ -116,6 +116,24 @@ h1 {
 	display: block;
 	margin: 0px;
 	padding: 10px 0px 10px 20px;
+	width: 100%;
+}
+
+h2 {
+	font-size: 18px;
+	clear: both;
+	display: block;
+	margin: 0px;
+	padding: 10px 0px 10px 20px;
+	width: 100%;
+}
+
+h3 {
+	font-size: 16px;
+	clear: both;
+	display: block;
+	margin: 0px;
+	padding: 10px 0px 0px 20px;
 	width: 100%;
 }
 

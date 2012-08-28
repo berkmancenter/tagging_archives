@@ -37,13 +37,7 @@
 	    <%= content_tag :div, msg, :class => [key], :id => "notice_#{key}" %>
 	  <% end %>
 
-    <% if content_for? :content_left %>
-		<div id="content-left">  
-        <%= yield :content_left %>
-	    </div>	
-    <% end %>
-
-    <div id="content-right">
+    <div id="content">
       <%= yield %>
     </div>
 

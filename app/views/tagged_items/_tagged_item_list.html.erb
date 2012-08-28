@@ -40,7 +40,7 @@
 		</p>	
 		<p>
 			<% if current_user.admin? %>
-		      	<%= link_to 'Edit', edit_tagged_item_path(tagged_item) %> | <%= link_to 'Destroy', tagged_item, confirm: 'Are you sure?', method: :delete %>
+			<%= link_to 'Edit', edit_tagged_item_path(tagged_item) %> | <%= link_to 'Delete', tagged_item, confirm: 'Are you sure?', method: :delete %>
 			<% else %>
 				<%= link_to 'Report', new_reported_item_path(:item => tagged_item) %>
 			<% end %>

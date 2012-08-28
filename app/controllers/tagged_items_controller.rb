@@ -93,11 +93,11 @@ class TaggedItemsController < ApplicationController
   end
   
   def all_tags
-    @tags = TaggedItem.tag_counts_on(:tags)
+    @tags = TaggedItem.tag_counts_on(:tags, :order=>'name asc')
   end
   
   def all_items
-    @tagged_items = TaggedItem.paginate(:page => params[:page])
+    @tagged_items = TaggedItem.paginate(:page => params[:page], :order=>'title asc')
   end
   
 end
