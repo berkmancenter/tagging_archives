@@ -13,7 +13,7 @@
 			  <a href="#" onclick="toggle_notes('notes');">Existing Notes</a>
 			  <div id="notes" style="display:none;"><%= @existing.notes %></div>
 			<% end %>
-			<%= f.input :notes, :input_html => { :rows => 5, :cols => 50 }, :hint => "Optional" %>
+			<%= f.input :notes, :input_html => { :rows => 5, :cols => 50 }, :hint => "Optional, include any identifying numbers (callno., box no., folder no., etc.)" %>
 	      <% end %>
 	      <%= f.actions %>
 	  </div>
