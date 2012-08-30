@@ -8,10 +8,6 @@
 			  <br />Existing Tags: <%= @existing.tag_list %>
 			<% end %>
 			<%= f.input :tag_list, :label => 'Tags', :hint => 'A comma separated list of tags.', :input_html => { :size => 75 } %>
-			<%= f.inputs :class => 'inline_fields' do %>
-			  	<%= f.input :box, :input_html => { :size => 5 }, :hint => "Optional" %> 
-				<%= f.input :folder, :input_html => { :size => 5 }, :hint => "Optional" %>
-			<% end %>
 			
 			<% unless @existing.nil? || @existing.notes.empty? %>
 			  <a href="#" onclick="toggle_notes('notes');">Existing Notes</a>
