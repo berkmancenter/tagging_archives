@@ -102,28 +102,47 @@ $(document).ready(function(){
 			else{
 				// If from VIA
 				if(document.domain=="via.lib.harvard.edu"){
-					var a=window.document.getElementsByTagName("option");
-					for(var i=0;i<a.length;i++){
-						if(a.item(i).innerHTML=="... Bookmark this record"){
-							link=a.item(i).getAttribute("value");
-							strInd=link.search("bookmarkTitle");
-							str=link.slice(strInd);
-							titleInd=str.search("=");
-							title=str.slice(titleInd+1);
-							f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(link)+"&tagged_item%5btitle%5d="+encodeURIComponent(title)+"&";
-							a=function(){
-								if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
-							};
-							if(/Firefox/.test(navigator.userAgent)){
-								setTimeout(a,0);
-								history.forward()
-							}
-							else{
-								a()
-							}
-							
-						}	
+					var o=window.document.getElementsByTagName("option");
+					if(o.length!=0){
+						for(var i=0;i<o.length;i++){
+							if(o.item(i).innerHTML=="... Bookmark this record"){
+								link=o.item(i).getAttribute("value");
+								strInd=link.search("bookmarkTitle");
+								str=link.slice(strInd);
+								titleInd=str.search("=");
+								title=str.slice(titleInd+1);
+								f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(link)+"&tagged_item%5btitle%5d="+encodeURIComponent(title)+"&";
+								a=function(){
+									if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
+								};
+								if(/Firefox/.test(navigator.userAgent)){
+									setTimeout(a,0);
+									history.forward()
+								}
+								else{
+									a()
+								}	
+							}	
+						}
 					}
+					else{
+						var alink=window.document.getElementsByTagName("a");
+						for(var i=0;i<alink.length;i++){
+							if(alink.item(i).innerHTML.indexOf("Bookmark this item") != -1){
+								f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent($("table").find("a[onclick]").attr("onclick").split("','")[1])+"&tagged_item%5btitle%5d="+encodeURIComponent(alink.item(i).getAttribute("title"))+"&";
+								a=function(){
+									if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
+								};
+								if(/Firefox/.test(navigator.userAgent)){
+									setTimeout(a,0);
+									history.forward()
+								}
+								else{
+									a()
+								}
+							}	
+						}
+					}	
 				}
 				else{
 					// If not a Finding Aid, PDS or VIA
