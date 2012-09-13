@@ -7,7 +7,6 @@
 	<div id="tagged_item">
 		<p><%= link_to tagged_item.title, tagged_item.urn, :target => "_blank" %></p>
 		<p>
-			<strong>URN</strong>: <%= link_to tagged_item.urn, tagged_item.urn, :target => "_blank" %><br />
 		
 			<strong>Tags:</strong>
 			<% tagged_item.tag_list.each do |tag| %>

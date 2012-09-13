@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 
-(function(){
-
+$(document).ready(function(){
+	// If a framed finding aid from OASIS
 	if(parent.FindingAid!=undefined){
 		var x=window.frames[0].document.getElementsByTagName("a");
 		for(var i=0;i<x.length;i++){
@@ -22,6 +22,8 @@
 				var link=x.item(i).getAttribute("href")
 			}
 		}
+		var selText=parent.FindingAid.getSelection();
+		alert($('li:contains(' + selText + ')').html());
 		f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(link)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 		a=function(){
 			if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
@@ -35,9 +37,10 @@
 		}
 	}
 	else{
+		// If an unframed finding aid from OASIS
 		var y=window.document.getElementById("permurn");
 		if(y!=undefined){
-			f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(y.innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
+			f="<%=request.protocol%><%=request.host_with_port%><%=request.fullpath%>bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(y.innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 			a=function(){
 				if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 			};
@@ -50,8 +53,10 @@
 			}
 		}
 		else{
+			// If from PDS
 			if(document.domain=="pds.lib.harvard.edu"){
 				myWin=window.open(window.location.href.replace("view","fullcitation"),"");
+				// If IE
 				if(/MSIE (\d+\.\d+);/.test(navigator.userAgent)){
 					function ieLoaded(){
 	    				var wBody=myWin.document.getElementsByTagName("body");
@@ -59,7 +64,7 @@
 	        				setTimeout(ieLoaded, 10);
 	    				}
 	    				else{
-	        				f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(myWin.document.getElementsByTagName("dd")[5].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
+	        				f="<%=request.protocol%><%=request.host_with_port%><%=request.fullpath%>bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(myWin.document.getElementsByTagName("dd")[5].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 							a=function(){
 								if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 							};
@@ -77,7 +82,7 @@
 				}
 				else{
 					function wload(){
-						f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(myWin.document.getElementsByClassName("resUrn")[1].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
+						f="<%=request.protocol%><%=request.host_with_port%><%=request.fullpath%>bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(myWin.document.getElementsByClassName("resUrn")[1].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 						a=function(){
 							if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 						};
@@ -95,7 +100,30 @@
 				}	
 			}
 			else{
-				alert("Use on a finding aid.")
+				// If from VIA
+				if(document.domain=="via.lib.harvard.edu"){
+					var a=window.document.getElementsByTagName("option");
+					for(var i=0;i<a.length;i++){
+						if(a.item(i).innerHTML=="... Bookmark this record"){
+							f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(a.item(i).getAttribute("value"))+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
+							a=function(){
+								if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
+							};
+							if(/Firefox/.test(navigator.userAgent)){
+								setTimeout(a,0);
+								history.forward()
+							}
+							else{
+								a()
+							}
+							
+						}	
+					}
+				}
+				else{
+					// If not a Finding Aid, PDS or VIA
+					alert("Use on a finding aid.")
+				}
 			}
 		}
 	}
