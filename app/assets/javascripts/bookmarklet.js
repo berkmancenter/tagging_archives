@@ -105,7 +105,12 @@ $(document).ready(function(){
 					var a=window.document.getElementsByTagName("option");
 					for(var i=0;i<a.length;i++){
 						if(a.item(i).innerHTML=="... Bookmark this record"){
-							f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(a.item(i).getAttribute("value"))+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
+							link=a.item(i).getAttribute("value");
+							strInd=link.search("bookmarkTitle");
+							str=link.slice(strInd);
+							titleInd=str.search("=");
+							title=str.slice(titleInd+1);
+							f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(link)+"&tagged_item%5btitle%5d="+encodeURIComponent(title)+"&";
 							a=function(){
 								if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 							};
