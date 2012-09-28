@@ -14,15 +14,6 @@
 			<% end %>
 		
 			<br />
-			
-			<% if !tagged_item.box.blank? %>
-				<strong>Box:</strong>
-				<%= tagged_item.box %><br />
-			<% end %>
-			<% if !tagged_item.folder.blank? %>
-				<strong>Folder:</strong>
-				<%= tagged_item.folder %><br />
-			<% end %>
 		
 			<strong>Tagged By:</strong>
 			<% tagged_item.users.each do |u| %>

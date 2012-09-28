@@ -101,6 +101,7 @@ dd {
 
 #utility {
 	float: right;
+	text-align: right;
 	margin: 15px 15px 0px 0px;
 }
 
@@ -364,16 +365,24 @@ th {
 .css4 { font-size: 1.6em; }
 
 #tagged_items_box {
-	background: #8c8179 none repeat scroll 0%;
-	margin-right: 20px;
+	border: 10px solid #8c8179;
+	margin-right: 40px;
 	padding: 10px 10px 10px;
 }
 
 #tagged_item {
-	border: 1px solid #8c8179;
+	border: 2px solid #8c8179;
 	padding: 10px 10px 5px;
+	margin-bottom: 8px;
 	background: #FFF none repeat scroll 0%;
 	
+}
+
+#sub_item {
+	border: 1px dotted #8c8179;
+	padding: 10px 10px 5px;
+	margin-bottom: 5px;
+	background: #FFF none repeat scroll 0%;
 }
 
 

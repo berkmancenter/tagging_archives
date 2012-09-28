@@ -3,8 +3,8 @@ class TaggedItem < ActiveRecord::Base
   
   has_and_belongs_to_many :users
   has_many :reported_items
-  validates_presence_of :title, :urn, :tag_list
-  validates_uniqueness_of :urn
+  validates_presence_of :title, :urn, :tag_list, :notes
+  #validates_uniqueness_of :urn
   
   self.per_page = 10
 

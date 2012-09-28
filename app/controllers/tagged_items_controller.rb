@@ -78,7 +78,7 @@ class TaggedItemsController < ApplicationController
     @tagged_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to tagged_items_url }
+      format.html { redirect_to all_items_tagged_items_url }
       format.json { head :no_content }
     end
   end
@@ -97,7 +97,14 @@ class TaggedItemsController < ApplicationController
   end
   
   def all_items
-    @tagged_items = TaggedItem.paginate(:page => params[:page], :order=>'title asc')
+    @tagged_items = TaggedItem.paginate(:page => params[:page], :order=>'urn asc')
+    p "sorted items"
+    @sorted_items = Hash.new
+    @tagged_items.each do |item|
+      @sorted_items[item.urn] ||= []
+      @sorted_items[item.urn] << item
+    end  
+    p @sorted_items
   end
   
 end

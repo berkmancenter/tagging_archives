@@ -12,21 +12,23 @@ class BookmarkletsController < ApplicationController
   end
   
   def add_item
-    @tagged_item = TaggedItem.find(:first, :conditions => {:urn => params[:tagged_item][:urn]})
-    if @tagged_item.nil? 
-      params[:tagged_item][:user_ids] = [current_user.id]
-      @tagged_item = TaggedItem.new(params[:tagged_item])
-    else
+    #@tagged_item = TaggedItem.find(:first, :conditions => {:urn => params[:tagged_item][:urn]})
+    params[:tagged_item][:user_ids] = [current_user.id]
+    @tagged_item = TaggedItem.new(params[:tagged_item])
+    #if @tagged_item.nil? 
+    #  params[:tagged_item][:user_ids] = [current_user.id]
+    #  @tagged_item = TaggedItem.new(params[:tagged_item])
+    #else
       # Merge notes.
-      @tagged_item.notes = @tagged_item.notes+"\r"+params[:tagged_item][:notes]
+    #  @tagged_item.notes = @tagged_item.notes+"\r"+params[:tagged_item][:notes]
       # Merge tags.
-      @tagged_item.tag_list = [@tagged_item.tag_list, params[:tagged_item][:tag_list].split(/,\s*/).collect{|t| t.downcase[0,255].gsub(/,/,'_')}].flatten.compact.join(',')
+    #  @tagged_item.tag_list = [@tagged_item.tag_list, params[:tagged_item][:tag_list].split(/,\s*/).collect{|t| t.downcase[0,255].gsub(/,/,'_')}].flatten.compact.join(',')
       # Merge users.
-      @user = User.find(current_user.id)
-      if !@tagged_item.users.include?(@user)
-        @tagged_item.users << @user
-      end 
-    end
+    #  @user = User.find(current_user.id)
+    #  if !@tagged_item.users.include?(@user)
+    #    @tagged_item.users << @user
+    #  end 
+    #end
 
     respond_to do|format|
       if @tagged_item.save

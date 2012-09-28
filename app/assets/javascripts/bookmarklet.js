@@ -22,8 +22,6 @@ $(document).ready(function(){
 				var link=x.item(i).getAttribute("href")
 			}
 		}
-		var selText=parent.FindingAid.getSelection();
-		alert($('li:contains(' + selText + ')').html());
 		f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(link)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 		a=function(){
 			if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
@@ -40,7 +38,7 @@ $(document).ready(function(){
 		// If an unframed finding aid from OASIS
 		var y=window.document.getElementById("permurn");
 		if(y!=undefined){
-			f="<%=request.protocol%><%=request.host_with_port%><%=request.fullpath%>bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(y.innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
+			f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(y.innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 			a=function(){
 				if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 			};
@@ -64,7 +62,7 @@ $(document).ready(function(){
 	        				setTimeout(ieLoaded, 10);
 	    				}
 	    				else{
-	        				f="<%=request.protocol%><%=request.host_with_port%><%=request.fullpath%>bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(myWin.document.getElementsByTagName("dd")[5].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
+	        				f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(myWin.document.getElementsByTagName("dd")[5].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 							a=function(){
 								if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 							};
@@ -82,7 +80,7 @@ $(document).ready(function(){
 				}
 				else{
 					function wload(){
-						f="<%=request.protocol%><%=request.host_with_port%><%=request.fullpath%>bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(myWin.document.getElementsByClassName("resUrn")[1].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
+						f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(myWin.document.getElementsByClassName("resUrn")[1].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 						a=function(){
 							if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 						};

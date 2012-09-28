@@ -1,5 +1,44 @@
 <% content_for :header do %>Tagged Items<% end %>
 
-<%= render :partial => 'shared/navigation' %>
-
-<%= render :partial => 'tagged_item_list', :locals => {:items => @tagged_items} %>
+<br />
+<%= will_paginate @sorted_items %>
+<br />
+<div id="tagged_items_box">
+	<% @sorted_items.each_key do |tagged_items| %>
+	<div id="tagged_item">
+		<p><%= link_to @sorted_items[tagged_items][0].title, @sorted_items[tagged_items][0].urn, :target => "_blank" %></p>
+		<p>
+		  <% @sorted_items[tagged_items].each do |item| %>
+		  <div id="sub_item">	
+			<strong>Tags:</strong>
+			<% item.tag_list.each do |tag| %>
+				<%= link_to tag, item_search_tagged_items_path(:query => tag) %>
+			<% end %>
+			<br />
+			<strong>Tagged By:</strong>
+			<% item.users.each do |u| %>
+				<%= u.user_identifier %>
+			<% end %>
+			<br />
+		
+			<strong>Notes:</strong><br />
+			<% if !item.notes.blank? %>
+				<%= h(item.notes).gsub(/\r/, '<br/>').html_safe %><br />
+			<% else %>
+				None.
+			<% end %>
+			<p>
+				<% if current_user.admin? %>
+				<%= link_to 'Edit', edit_tagged_item_path(item) %> | <%= link_to 'Delete', item, confirm: 'Are you sure?', method: :delete %>
+				<% else %>
+					<%= link_to 'Report', new_reported_item_path(:item => item) %>
+				<% end %>
+			</p>
+		  </div>
+		  <% end %>	
+		</p>		
+	</div>
+	<% end %>
+</div>
+<br />
+<%= will_paginate @sorted_items %>
