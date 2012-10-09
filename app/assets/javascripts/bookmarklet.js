@@ -22,7 +22,7 @@ $(document).ready(function(){
 				var link=x.item(i).getAttribute("href")
 			}
 		}
-		f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(link)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
+		f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burn%5d="+encodeURIComponent(link)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 		a=function(){
 			if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 		};
@@ -38,7 +38,7 @@ $(document).ready(function(){
 		// If an unframed finding aid from OASIS
 		var y=window.document.getElementById("permurn");
 		if(y!=undefined){
-			f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(y.innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
+			f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burn%5d="+encodeURIComponent(y.innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 			a=function(){
 				if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 			};
@@ -62,7 +62,7 @@ $(document).ready(function(){
 	        				setTimeout(ieLoaded, 10);
 	    				}
 	    				else{
-	        				f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(myWin.document.getElementsByTagName("dd")[5].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
+	        				f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burn%5d="+encodeURIComponent(myWin.document.getElementsByTagName("dd")[5].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 							a=function(){
 								if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 							};
@@ -80,7 +80,7 @@ $(document).ready(function(){
 				}
 				else{
 					function wload(){
-						f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(myWin.document.getElementsByClassName("resUrn")[1].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
+						f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burn%5d="+encodeURIComponent(myWin.document.getElementsByClassName("resUrn")[1].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 						a=function(){
 							if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 						};
@@ -109,7 +109,7 @@ $(document).ready(function(){
 								str=link.slice(strInd);
 								titleInd=str.search("=");
 								title=str.slice(titleInd+1);
-								f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent(link)+"&tagged_item%5btitle%5d="+encodeURIComponent(title)+"&";
+								f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burn%5d="+encodeURIComponent(link)+"&tagged_item%5btitle%5d="+encodeURIComponent(title)+"&";
 								a=function(){
 									if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 								};
@@ -127,7 +127,7 @@ $(document).ready(function(){
 						var alink=window.document.getElementsByTagName("a");
 						for(var i=0;i<alink.length;i++){
 							if(alink.item(i).innerHTML.indexOf("Bookmark this item") != -1){
-								f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burl%5d="+encodeURIComponent($("table").find("a[onclick]").attr("onclick").split("','")[1])+"&tagged_item%5btitle%5d="+encodeURIComponent(alink.item(i).getAttribute("title"))+"&";
+								f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burn%5d="+encodeURIComponent($("table").find("a[onclick]").attr("onclick").split("','")[1])+"&tagged_item%5btitle%5d="+encodeURIComponent(alink.item(i).getAttribute("title"))+"&";
 								a=function(){
 									if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 								};
