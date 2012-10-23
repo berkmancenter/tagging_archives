@@ -24,7 +24,7 @@ $(document).ready(function(){
 		}
 		f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burn%5d="+encodeURIComponent(link)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 		a=function(){
-			if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700,resizable=yes"))location.href=f+"jump=yes"
+			if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700,resizable=yes,scrollbars=yes"))location.href=f+"jump=yes"
 		};
 		if(/Firefox/.test(navigator.userAgent)){
 			setTimeout(a,0);
@@ -40,7 +40,7 @@ $(document).ready(function(){
 		if(y!=undefined){
 			f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burn%5d="+encodeURIComponent(y.innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 			a=function(){
-				if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700,resizable=yes"))location.href=f+"jump=yes"
+				if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700,resizable=yes,scrollbars=yes"))location.href=f+"jump=yes"
 			};
 			if(/Firefox/.test(navigator.userAgent)){
 				setTimeout(a,0);
@@ -64,7 +64,7 @@ $(document).ready(function(){
 	    				else{
 	        				f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burn%5d="+encodeURIComponent(myWin.document.getElementsByTagName("dd")[5].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 							a=function(){
-								if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700,resizable=yes"))location.href=f+"jump=yes"
+								if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700,resizable=yes,scrollbars=yes"))location.href=f+"jump=yes"
 							};
 							if(/Firefox/.test(navigator.userAgent)){
 								setTimeout(a,0);
@@ -82,7 +82,7 @@ $(document).ready(function(){
 					function wload(){
 						f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burn%5d="+encodeURIComponent(myWin.document.getElementsByClassName("resUrn")[1].innerHTML)+"&tagged_item%5btitle%5d="+encodeURIComponent(document.title)+"&";
 						a=function(){
-							if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700,resizable=yes"))location.href=f+"jump=yes"
+							if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700,resizable=yes,scrollbars=yes"))location.href=f+"jump=yes"
 						};
 						if(/Firefox/.test(navigator.userAgent)){
 							setTimeout(a,0);
@@ -109,7 +109,7 @@ $(document).ready(function(){
 								title=str.slice(titleInd+1);
 								f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burn%5d="+encodeURIComponent(link)+"&tagged_item%5btitle%5d="+encodeURIComponent(title)+"&";
 								a=function(){
-									if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700,resizable=yes"))location.href=f+"jump=yes"
+									if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700,resizable=yes,scrollbars=yes"))location.href=f+"jump=yes"
 								};
 								if(/Firefox/.test(navigator.userAgent)){
 									setTimeout(a,0);
@@ -127,7 +127,7 @@ $(document).ready(function(){
 							if(alink.item(i).innerHTML.indexOf("Bookmark this item") != -1){
 								f="http://0.0.0.0:3000/bookmarklets/add?tagged_item%5burn%5d="+encodeURIComponent($("table").find("a[onclick]").attr("onclick").split("','")[1])+"&tagged_item%5btitle%5d="+encodeURIComponent(alink.item(i).getAttribute("title"))+"&";
 								a=function(){
-									if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700,resizable=yes"))location.href=f+"jump=yes"
+									if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700,resizable=yes,scrollbars=yes"))location.href=f+"jump=yes"
 								};
 								if(/Firefox/.test(navigator.userAgent)){
 									setTimeout(a,0);
