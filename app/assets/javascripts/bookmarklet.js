@@ -27,7 +27,7 @@ $(document).ready(function(){
 			if(!window.open(f+"noui=1&jump=doclose","tagging_archives","width=560,height=700"))location.href=f+"jump=yes"
 		};
 		if(/Firefox/.test(navigator.userAgent)){
-				setTimeout(a,0);
+			setTimeout(a,0);
 			history.forward()
 		}
 		else{
@@ -86,11 +86,9 @@ $(document).ready(function(){
 						};
 						if(/Firefox/.test(navigator.userAgent)){
 							setTimeout(a,0);
-							history.back()
 						}
 						else{
 							a();
-							history.back()
 						}
 						myWin.close()
 					}
@@ -144,7 +142,7 @@ $(document).ready(function(){
 				}
 				else{
 					// If not a Finding Aid, PDS or VIA
-					alert("Use on a finding aid.")
+					alert("Use in OASIS, PDS or VIA.")
 				}
 			}
 		}
