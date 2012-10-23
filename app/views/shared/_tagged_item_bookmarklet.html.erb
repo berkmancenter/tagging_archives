@@ -2,6 +2,7 @@
 	<%= semantic_form_for(@tagged_item, :url => bookmarklets_add_item_url, :method => :post) do |f| %>
 	  <div class="bookmarklet_tabs" id="bookmarklet_tabs">
 	      <%= f.inputs do %>
+		    * indicates required fields<br />
 	        <%= f.input :title, :required => true, :input_html => { :value => @title, :size => 75, :readonly => true } %>
 	        <%= f.input :urn, :required => true, :input_html => { :value => @urn, :size => 75, :readonly => true } %>
 			<% unless @existing.nil? || @existing.tag_list.empty? %>
@@ -13,7 +14,7 @@
 			  <a href="#" onclick="toggle_notes('notes');">Existing Notes</a>
 			  <div id="notes" style="display:none;"><%= @existing.notes %></div>
 			<% end %>
-			<%= f.input :notes, :input_html => { :rows => 5, :cols => 50 }, :hint => "Include any identifying numbers or information (call no., box no., folder no., date, etc.) when tagging in OASIS" %>
+			<%= f.input :notes, :input_html => { :rows => 5, :cols => 50 }, :hint => "Include any identifying numbers or information (call no., box no., folder no., date, etc.) when tagging in OASIS, PDS or VIA" %>
 	      <% end %>
 	      <%= f.actions %>
 	  </div>
