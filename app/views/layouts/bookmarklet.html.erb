@@ -10,6 +10,12 @@
 <body <%= yield :body %>>
 
 	<div id="header">
+		
+	    <div id="logo">
+	      <span>
+	        <a href="/" title="Tagging Archives" id="home-logo">Tagging Archives</a>
+	      </span>
+	    </div>
 		<div id="utility">
 			<% if user_signed_in? %>
 	          Signed in as <%= current_user.email %>. Not you?
@@ -18,11 +24,9 @@
 			  <%= link_to "Sign in", new_user_session_path %>
 	        <% end %> 
 	    </div>
-	    <div id="logo">
-	      <span>
-	        <a href="/" title="Tagging Archives" id="home-logo">Tagging Archives</a>
-	      </span>
-	    </div>
+		<div id="nav">
+			<%= render :partial => 'shared/navigation' %>
+		</div>	
 	  </div>
 
 	<div id="container">	
